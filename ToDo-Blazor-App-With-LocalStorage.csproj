@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>ToDo-Blazor-App-With-LocalStorage</RootNamespace>
+    <AssemblyName>$(AssemblyName.Replace(' ', '_'))</AssemblyName>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <OutputPath>./.build/bin</OutputPath>
+    <BaseIntermediateOutputPath>./.build/obj</BaseIntermediateOutputPath>
+  </PropertyGroup>
+
+</Project>
