@@ -1,10 +1,13 @@
 using ToDo_Blazor_App_With_LocalStorage.Components;
+using ToDo_Blazor_App_With_LocalStorage.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+builder.Services.AddScoped<TodoStorageService>();
 
 var app = builder.Build();
 

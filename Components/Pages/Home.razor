@@ -1,8 +1,92 @@
 ﻿@page "/"
+
+@using System.Text.Json
+@using ToDo_Blazor_App_With_LocalStorage.Services
+@using ToDo_Blazor_App_With_LocalStorage.Models
+
 @rendermode InteractiveServer
 
 <PageTitle>Home</PageTitle>
 
-<h1>Hello, world!</h1>
+@if (IsLoading)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <TodoWrapper Items="TodoItems" OnChanged="OnTodoListStateChanged">
+</TodoWrapper>
+}
 
-Welcome to your new app.
+
+
+
+
+@code {
+    private bool IsLoading { get; set; } = true;
+    private Dictionary<Guid, TodoItem> TodoItems { get; set; } = [];
+
+    [Inject]
+    public TodoStorageService TodoStorageService { get; set; } = default!;
+
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            TodoItems = await TodoStorageService.GetTodoItemsAsync();
+            IsLoading = false;
+            await InvokeAsync(StateHasChanged);
+        }
+    }
+
+    protected async void OnTodoListStateChanged(TodoItemStateChangedEventArgs e)
+    {
+        await TodoStorageService.SaveTodoItemAsync(TodoItems);
+        await InvokeAsync(StateHasChanged);
+
+    }
+
+}
+
+
+
+@*
+@if (IsLoading)
+{
+<p>Loading...</p>
+}
+else
+{
+<TodoWrapper Items="TodoItems" OnStateChanged="OnTodoListChanged">
+<ItemTemplate Context="TodoItem">
+<b>@TodoItem.Title</b>
+</ItemTemplate>
+</TodoWrapper>
+}
+
+@code {
+protected Dictionary<int, TodoItem> TodoItems { get; set; } = [];
+
+protected bool IsLoading { get; set; } = false;
+
+[Inject]
+public TodoStorageService TodoStorageService { get; set; } = default!;
+
+protected override async Task OnAfterRenderAsync(bool firstRender)
+{
+if (firstRender)
+{
+TodoItems = await TodoStorageService.GetTodosAsync();
+
+IsLoading = false;
+await InvokeAsync(StateHasChanged);
+}
+}
+
+protected async void OnTodoListChanged(TodoItemChangedEventArgs e)
+{
+await TodoStorageService.SaveTodoItemAsync(TodoItems);
+await InvokeAsync(StateHasChanged);
+}
+} *@

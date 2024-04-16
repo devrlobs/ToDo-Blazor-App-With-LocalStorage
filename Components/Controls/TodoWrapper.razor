@@ -1,0 +1,38 @@
+<div class="todo-list">
+    <input 
+        type="text" 
+        placeholder="What do you want to do?" 
+        style="width: 200px;" 
+        @onkeypress="OnTodoInputKeyPressHandler" 
+        @bind-value="CurrentTodoField" 
+        @bind-value:event="oninput" />
+
+    <ul>
+        @foreach(var (id, todoItem) in Items)
+        {
+            if(todoItem.IsEditing)
+            {
+                <input
+                    type="text"
+                    style="width: 200px;"
+                    @oninput="@((e) => OnTodoEditingInputHandler(e,todoItem))"
+                    @onkeypress="@((e) => OnTodoEditingItemKeyPressHandler(e,todoItem))"
+                    value="@todoItem.Title" />
+            }
+            else
+            {
+                <li style="cursor: pointer;" @ondblclick="@(() => OnTodoItemDbClick(todoItem))">
+                    <input
+                        @onclick:stopPropagation="true"
+                        @ondblclick:stopPropagation="true"
+                        type="checkbox"
+                        @onchange="@((e) => OnTodoItemInputCheckChanged(e,todoItem))"
+                        checked="@todoItem.IsDone" />
+                    <span>@todoItem.Title</span>
+                    <span @onclick="@(() => OnTodoItemRemove(todoItem))">delete</span>
+                </li>
+            }
+        }
+    </ul>
+
+</div>
