@@ -1,18 +1,19 @@
 <div class="todo-list">
-    <input 
-        type="text" 
-        placeholder="What do you want to do?" 
-        style="width: 200px;"
-        @onkeypress="OnTodoInputKeyPressHandler"
-        @bind-value="CurrentTodoField" 
-        @bind-value:event="oninput" />
+    @if (InputTemplate is null)
+    {
+        <li>Please provide your template.</li>
+    }
+    else
+    {
+        @InputTemplate(new TodoItemInputTemplateData { OnSave = OnTodoInputSaveHandler })
+    }
 
     <ul>
         @foreach (var (id, todoItem) in Items)
         {
-            if(ItemTemplate is null)
+            if (ItemTemplate is null)
             {
-                <span>Please provide your template.</span>
+                <li>Please provide your template.</li>
             }
             else
             {
@@ -20,5 +21,18 @@
             }
         }
     </ul>
+
+    @if (FooterTemplate is null)
+    {
+        <span>Please provide your footer.</span>
+    }
+    else
+    {
+        @FooterTemplate(new TodoItemFooterTemplateData
+        {
+            OnFilterClick = OnFilterClickHandler,
+            TodoItemCount = Items.Where(o => o.Value.IsDone == false).Count()
+        })
+    }
 
 </div>

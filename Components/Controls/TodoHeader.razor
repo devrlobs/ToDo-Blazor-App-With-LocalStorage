@@ -1,0 +1,7 @@
+    <input 
+        type="text" 
+        placeholder=@Placeholder 
+        style="width: 200px;"
+        @onkeypress="OnTodoInputKeyPressHandler"
+        @bind-value="CurrentTodoField" 
+        @bind-value:event="oninput" />

@@ -27,20 +27,22 @@ public partial class TodoWrapper
     public EventCallback<TodoItemStateChangedEventArgs> OnChanged { get; set; }
 
     [Parameter]
-    public RenderFragment<TodoItemTemplateData>? ItemTemplate {get;set;}
+    public EventCallback<string> OnFilterChanged { get; set; }
 
-     protected string CurrentTodoField { get; set; } = string.Empty;
-    // protected string EditingTodoField { get; set; } = string.Empty;
+    [Parameter]
+    public RenderFragment<TodoItemTemplateData>? ItemTemplate { get; set; }
 
-    protected void OnTodoInputKeyPressHandler(KeyboardEventArgs e)
+    [Parameter]
+    public RenderFragment<TodoItemInputTemplateData>? InputTemplate { get; set; }
+
+    [Parameter]
+    public RenderFragment<TodoItemFooterTemplateData>? FooterTemplate { get; set; }
+
+    protected void OnTodoInputSaveHandler(string todo)
     {
-        if (e.Key == "Enter")
-        {
-            TodoItem todoItem = new(Guid.NewGuid(), CurrentTodoField, false,false);
-            Items.Add(todoItem.Id, todoItem);
-            CurrentTodoField = string.Empty;
-            OnChanged.InvokeAsync(new TodoItemStateChangedEventArgs(todoItem, TodoItemChangeType.Add));
-        }
+        TodoItem todoItem = new(Guid.NewGuid(), todo, false, false);
+        Items.Add(todoItem.Id, todoItem);
+        OnChanged.InvokeAsync(new TodoItemStateChangedEventArgs(todoItem, TodoItemChangeType.Add));
     }
 
     protected void OnItemChanged(TodoItem item)
@@ -61,5 +63,10 @@ public partial class TodoWrapper
     {
         Items.Remove(item.Id);
         OnChanged.InvokeAsync(new TodoItemStateChangedEventArgs(item, TodoItemChangeType.Delete));
+    }
+
+    protected void OnFilterClickHandler(string filterType)
+    {
+        OnFilterChanged.InvokeAsync(filterType);
     }
 }

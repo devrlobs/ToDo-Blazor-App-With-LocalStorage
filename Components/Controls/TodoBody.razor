@@ -1,28 +1,23 @@
-<span>
+<li style="cursor: pointer;" @ondblclick="OnTodoItemDbClick">
     @if (Item.IsEditing)
     {
-        <li>
-            <input 
-                type="text" 
-                style="width: 200px;" 
-                @oninput="OnTodoEditingInputHandler"
-                @onkeypress="OnTodoEditingItemKeyPressHandler" 
-                value="@Item.Title" />
-        </li>
+        <input 
+            type="text" 
+            style="width: 200px;" 
+            @oninput="OnTodoEditingInputHandler"
+            @onkeypress="OnTodoEditingItemKeyPressHandler" 
+            value="@Item.Title" />
     }
     else
     {
-        <li style="cursor: pointer;" @ondblclick="OnTodoItemDbClick">
-            <input 
-                @onclick:stopPropagation="true" 
-                @ondblclick:stopPropagation="true" 
-                type="checkbox"
-                @onchange="OnTodoItemInputCheckChanged" 
-                checked="@Item.IsDone" />
-
-            <span>@Item.Title</span>
-            <span>&nbsp;&nbsp;&nbsp;</span>
-            <span @onclick="OnTodoItemRemove">delete</span>
-        </li>
+        <input 
+            @onclick:stopPropagation="true" 
+            @ondblclick:stopPropagation="true" 
+            type="checkbox"
+            @onchange="OnTodoItemInputCheckChanged" 
+            checked="@Item.IsDone" />
+        <span>@Item.Title</span>
+        <span>&nbsp;&nbsp;&nbsp;</span>
+        <span @onclick="OnTodoItemRemove">delete</span>
     }
-</span>
+</li>
