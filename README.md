@@ -7,3 +7,4 @@ a simple to-do app using Microsoft ASP.NET Blazor with TypeScript and Tailwind C
 
 home.razor will be the only page that will directly access the service layer
 
+stopped at 2:55:47 to modify class into record
