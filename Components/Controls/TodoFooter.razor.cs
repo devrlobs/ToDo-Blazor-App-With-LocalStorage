@@ -8,6 +8,9 @@ public partial class TodoFooter
 {
     [Parameter]
     public EventCallback<string> OnFilterClick { get; set; }
+    
+    [Parameter]
+    public EventCallback<int> OnRemoveCompletedClick { get; set; }
 
     [Parameter]
     public int TodoItemCount { get; set; }
@@ -19,6 +22,9 @@ public partial class TodoFooter
     {
         FooterTemplateData.OnFilterClick?.Invoke(filterType);
     }
-    
 
+    protected void OnTodoItemCompletedRemove(MouseEventArgs e)
+    {
+        FooterTemplateData.OnRemoveCompletedClick?.Invoke();
+    }
 }

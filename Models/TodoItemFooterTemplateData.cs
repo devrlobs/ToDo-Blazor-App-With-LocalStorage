@@ -4,4 +4,6 @@ public record TodoItemFooterTemplateData
 {
     public Action<string>? OnFilterClick { get; set; }
     public int TodoItemCount { get; set; }
+
+    public Action? OnRemoveCompletedClick { get; set; }
 }

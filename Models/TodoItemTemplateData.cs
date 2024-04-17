@@ -6,4 +6,5 @@ public record TodoItemTemplateData(TodoItem item)
     public Action<TodoItem>? OnChanged { get; set; }
     public Action<TodoItem>? OnEnterEditMode { get; set; }
     public Action<TodoItem>? OnRemoved { get; set; }
+    public Action? OnRemovedCompleted { get; set; }
 } 

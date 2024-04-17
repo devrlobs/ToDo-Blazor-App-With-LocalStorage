@@ -25,7 +25,7 @@ public partial class TodoWrapper
 
     [Parameter]
     public EventCallback<TodoItemStateChangedEventArgs> OnChanged { get; set; }
-
+    
     [Parameter]
     public EventCallback<string> OnFilterChanged { get; set; }
 
@@ -56,13 +56,25 @@ public partial class TodoWrapper
         return new TodoItemTemplateData(item)
         {
             OnChanged = OnItemChanged,
-            OnRemoved = OnTodoItemRemove
+            OnRemoved = OnTodoItemRemove,
+            OnRemovedCompleted = OnTodoItemRemoveCompleted
         };
     }
     protected void OnTodoItemRemove(TodoItem item)
     {
         Items.Remove(item.Id);
         OnChanged.InvokeAsync(new TodoItemStateChangedEventArgs(item, TodoItemChangeType.Delete));
+    }
+    
+    protected void OnTodoItemRemoveCompleted()
+    {
+        var tempItems = Items.Where(o=>o.Value.IsDone == true).ToDictionary(p => p.Key, p => p.Value);
+
+        foreach(var todo in tempItems)
+        {
+            Items.Remove(todo.Value.Id);
+            OnChanged.InvokeAsync(new TodoItemStateChangedEventArgs(todo.Value, TodoItemChangeType.Delete));
+        } 
     }
 
     protected void OnFilterClickHandler(string filterType)

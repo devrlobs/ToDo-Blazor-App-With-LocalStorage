@@ -14,16 +14,17 @@
 }
 else
 {
+    <h1 class="text-center mt-[100px] text-7xl text-[#b83f45]">todos</h1>
     <TodoWrapper Items="TodoItems" OnChanged="OnTodoListStateChanged" OnFilterChanged="OnFilterChanged">
-    <InputTemplate Context="TodoItemStr">
-        <TodoHeader HeaderTemplateData="TodoItemStr" />
-    </InputTemplate>
-    <ItemTemplate Context="TodoItemCtx">
-        <TodoBody TemplateData="TodoItemCtx" />
-    </ItemTemplate>
-    <FooterTemplate Context="TodoFooter">
-        <TodoFooter FooterTemplateData="TodoFooter" />
-    </FooterTemplate>
+        <InputTemplate Context="TodoItemStr">
+            <TodoHeader HeaderTemplateData="TodoItemStr" />
+        </InputTemplate>
+        <ItemTemplate Context="TodoItemCtx">
+            <TodoBody TemplateData="TodoItemCtx" />
+        </ItemTemplate>
+        <FooterTemplate Context="TodoFooter">
+            <TodoFooter FooterTemplateData="TodoFooter" />
+        </FooterTemplate>
 </TodoWrapper>
 }
 
@@ -54,5 +55,4 @@ else
         TodoItems = await TodoStorageService.GetFilteredTodoItemAsync(filter);
         await InvokeAsync(StateHasChanged);
     }
-
 }

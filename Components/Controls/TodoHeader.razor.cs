@@ -8,7 +8,7 @@ public partial class TodoHeader
 {
     protected string CurrentTodoField {get;set;} = string.Empty;
     [Parameter]
-    public string Placeholder {get;set;} = "What do you want to do?";
+    public string Placeholder {get;set;} = "What needs to be done?";
     [Parameter]
     public EventCallback<string> OnSave {get;set;}
 

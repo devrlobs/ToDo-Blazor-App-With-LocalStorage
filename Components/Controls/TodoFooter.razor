@@ -3,5 +3,5 @@
     <span><button @onclick="@(() => OnTodoFilterClickedHandler("All"))">All</button></span>
     <span><button @onclick="@(() => OnTodoFilterClickedHandler("Active"))">Active</button></span>
     <span><button @onclick="@(() => OnTodoFilterClickedHandler("Completed"))">Completed</button></span>
-    <span><button @onclick="@(() => OnTodoFilterClickedHandler("Remove"))">Remove Completed</button></span>
+    <span><button @onclick="OnTodoItemCompletedRemove">Remove Completed</button></span>
 </div>

@@ -1,4 +1,4 @@
-<div class="todo-list">
+<div class="border-2 border-black m-auto mt-[30px] w-3/6 ">
     @if (InputTemplate is null)
     {
         <li>Please provide your template.</li>
@@ -31,7 +31,8 @@
         @FooterTemplate(new TodoItemFooterTemplateData
         {
             OnFilterClick = OnFilterClickHandler,
-            TodoItemCount = Items.Where(o => o.Value.IsDone == false).Count()
+            TodoItemCount = Items.Where(o => o.Value.IsDone == false).Count(),
+            OnRemoveCompletedClick = OnTodoItemRemoveCompleted
         })
     }
 
