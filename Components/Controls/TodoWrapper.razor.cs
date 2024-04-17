@@ -27,56 +27,36 @@ public partial class TodoWrapper
     public EventCallback<TodoItemStateChangedEventArgs> OnChanged { get; set; }
 
     [Parameter]
-    public RenderFragment<TodoItem>? ItemTemplate {get;set;}
+    public RenderFragment<TodoItemTemplateData>? ItemTemplate {get;set;}
 
-    protected string CurrentTodoField { get; set; } = string.Empty;
-    protected string EditingTodoField { get; set; } = string.Empty;
-    protected Guid Id { get; set; } = Guid.NewGuid();
+     protected string CurrentTodoField { get; set; } = string.Empty;
+    // protected string EditingTodoField { get; set; } = string.Empty;
 
     protected void OnTodoInputKeyPressHandler(KeyboardEventArgs e)
     {
         if (e.Key == "Enter")
         {
-            var id = Guid.NewGuid();
-            TodoItem todoItem = new() { Id = id, Title = CurrentTodoField, IsDone = false, IsEditing = false };
-            Items.Add(id, todoItem);
+            TodoItem todoItem = new(Guid.NewGuid(), CurrentTodoField, false,false);
+            Items.Add(todoItem.Id, todoItem);
             CurrentTodoField = string.Empty;
             OnChanged.InvokeAsync(new TodoItemStateChangedEventArgs(todoItem, TodoItemChangeType.Add));
         }
     }
 
-    protected void OnTodoEditingInputHandler(ChangeEventArgs e, TodoItem item)
+    protected void OnItemChanged(TodoItem item)
     {
-        TodoItem todoItem = new() { Id = item.Id, Title = e.Value?.ToString() ?? string.Empty, IsDone = item.IsDone, IsEditing = item.IsEditing };
-        Items[item.Id] = todoItem;
+        Items[item.Id] = item;
+        OnChanged.InvokeAsync(new TodoItemStateChangedEventArgs(item, TodoItemChangeType.Update));
     }
 
-    protected void OnTodoEditingItemKeyPressHandler(KeyboardEventArgs e, TodoItem item)
+    protected TodoItemTemplateData GetTodoItemTemplateData(TodoItem item)
     {
-        if (e.Key == "Enter")
+        return new TodoItemTemplateData(item)
         {
-            TodoItem todoItem = new() { Id = item.Id, Title = item.Title, IsDone = item.IsDone, IsEditing = false };
-            Items[item.Id] = todoItem;
-            OnChanged.InvokeAsync(new TodoItemStateChangedEventArgs(Items[item.Id], TodoItemChangeType.Update));
-        }
+            OnChanged = OnItemChanged,
+            OnRemoved = OnTodoItemRemove
+        };
     }
-
-    protected void OnTodoItemDbClick(TodoItem item)
-    {
-        Items.Keys.ToList().ForEach(key => Items[key].IsEditing = false);
-        Items[item.Id].IsEditing = true;
-    }
-
-    protected void OnTodoItemInputCheckChanged(ChangeEventArgs e, TodoItem item)
-    {
-        string isCheckedString = e.Value?.ToString()?.ToLowerInvariant() ?? "false";
-        TodoItem todoItem = new() { IsEditing = item.IsEditing };
-        todoItem.IsDone = bool.Parse(isCheckedString);
-        Items[item.Id] = todoItem;
-        OnChanged.InvokeAsync(new TodoItemStateChangedEventArgs(Items[item.Id], TodoItemChangeType.Update));
-
-    }
-
     protected void OnTodoItemRemove(TodoItem item)
     {
         Items.Remove(item.Id);

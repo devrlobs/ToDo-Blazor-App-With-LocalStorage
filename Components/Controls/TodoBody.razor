@@ -1,12 +1,14 @@
 <span>
-    if (Item.IsEditing)
+    @if (Item.IsEditing)
     {
-        <input 
-            type="text" 
-            style="width: 200px;" 
-            @oninput="OnTodoEditingInputHandler"
-            @onkeypress="OnTodoEditingItemKeyPressHandler" 
-            value="@Item.Title" />
+        <li>
+            <input 
+                type="text" 
+                style="width: 200px;" 
+                @oninput="OnTodoEditingInputHandler"
+                @onkeypress="OnTodoEditingItemKeyPressHandler" 
+                value="@Item.Title" />
+        </li>
     }
     else
     {

@@ -16,7 +16,7 @@ else
 {
     <TodoWrapper Items="TodoItems" OnChanged="OnTodoListStateChanged">
         <ItemTemplate Context="TodoItemCtx">
-            <TodoBody Item="TodoItemCtx" />
+            <TodoBody TemplateData="TodoItemCtx" />
         </ItemTemplate>
     </TodoWrapper>
 }
