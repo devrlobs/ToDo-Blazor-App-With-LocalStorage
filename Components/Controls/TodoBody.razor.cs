@@ -38,12 +38,12 @@ public partial class TodoBody
     {
         string isCheckedString = e.Value?.ToString()?.ToLowerInvariant() ?? "false";
         Item = Item with { IsDone = bool.Parse(isCheckedString) };
-          TemplateData.OnChanged?.Invoke(Item);
+        TemplateData.OnChanged?.Invoke(Item);
     }
 
     protected void OnTodoItemRemove(MouseEventArgs e)
     {
-          TemplateData.OnRemoved?.Invoke(Item);
+        TemplateData.OnRemoved?.Invoke(Item);
     }
 }
 

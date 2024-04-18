@@ -25,12 +25,14 @@ else
         <FooterTemplate Context="TodoFooter">
             <TodoFooter FooterTemplateData="TodoFooter" />
         </FooterTemplate>
-</TodoWrapper>
+    </TodoWrapper>
 }
 
 @code {
     private bool IsLoading { get; set; } = true;
+    
     private Dictionary<Guid, TodoItem> TodoItems { get; set; } = [];
+
     [Inject]
     private TodoStorageService TodoStorageService { get; set; } = default!;
 
