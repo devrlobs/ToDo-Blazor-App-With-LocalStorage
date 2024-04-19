@@ -1,4 +1,4 @@
-<li style="cursor: pointer;" @ondblclick="OnTodoItemDbClick">
+<li style="cursor: pointer;" @ondblclick="OnTodoItemDbClick" class="">
     @if (Item.IsEditing)
     {
         <input 
@@ -10,14 +10,14 @@
     }
     else
     {
-        <input 
+        <input class="checkbox-round"
             @onclick:stopPropagation="true" 
             @ondblclick:stopPropagation="true" 
             type="checkbox"
             @onchange="OnTodoItemInputCheckChanged" 
             checked="@Item.IsDone" />
-        <span>@Item.Title</span>
+        <span class="">@Item.Title</span>
         <span>&nbsp;&nbsp;&nbsp;</span>
-        <span @onclick="OnTodoItemRemove">delete</span>
+        <span class="float-right delete-button" @onclick="OnTodoItemRemove">x</span>
     }
 </li>

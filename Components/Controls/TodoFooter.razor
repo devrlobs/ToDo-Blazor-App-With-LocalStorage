@@ -1,7 +1,23 @@
-<div>
-    <span>@FooterTemplateData.TodoItemCount Active Count</span>
-    <span><button @onclick="@(() => OnTodoFilterClickedHandler("All"))">All</button></span>
-    <span><button @onclick="@(() => OnTodoFilterClickedHandler("Active"))">Active</button></span>
-    <span><button @onclick="@(() => OnTodoFilterClickedHandler("Completed"))">Completed</button></span>
-    <span><button @onclick="OnTodoItemCompletedRemove">Remove Completed</button></span>
+<div class="container">
+    <div class="left-left">
+        <span 
+            class="">@FooterTemplateData.TodoItemCount Active Count
+        </span>
+    </div>
+    <div class="center-div">
+        <span class="">
+            <button @onclick="@(() => OnTodoFilterClickedHandler("All"))">All</button>
+        </span>
+        <span class="">
+            <button @onclick="@(() => OnTodoFilterClickedHandler("Active"))">Active</button>
+        </span>
+        <span class="">
+            <button @onclick="@(() => OnTodoFilterClickedHandler("Completed"))">Completed</button>
+        </span>
+    </div>
+    <div class="right-div">
+        <span class="">
+            <button @onclick="OnTodoItemCompletedRemove">Remove Completed</button>
+        </span>
+    </div>
 </div>
