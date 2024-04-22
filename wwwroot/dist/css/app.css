@@ -554,97 +554,255 @@ video {
   --tw-contain-style:  ;
 }
 
-.container {
-  width: 100%;
-}
-
-@media (min-width: 640px) {
-  .container {
-    max-width: 640px;
-  }
-}
-
-@media (min-width: 768px) {
-  .container {
-    max-width: 768px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .container {
-    max-width: 1024px;
-  }
-}
-
-@media (min-width: 1280px) {
-  .container {
-    max-width: 1280px;
-  }
-}
-
-@media (min-width: 1536px) {
-  .container {
-    max-width: 1536px;
-  }
-}
-
 .static {
   position: static;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.relative {
+  position: relative;
+}
+
+.inset-x-0 {
+  left: 0px;
+  right: 0px;
+}
+
+.top-\[-140px\] {
+  top: -140px;
+}
+
+.left-0 {
+  left: 0px;
+}
+
+.right-0 {
+  right: 0px;
+}
+
+.z-\[2\] {
+  z-index: 2;
 }
 
 .float-right {
   float: right;
 }
 
-.m-auto {
-  margin: auto;
+.float-left {
+  float: left;
 }
 
-.mt-\[100px\] {
-  margin-top: 100px;
+.m-0 {
+  margin: 0px;
 }
 
-.mt-\[30px\] {
-  margin-top: 30px;
+.m-\[3px\] {
+  margin: 3px;
+}
+
+.m-\[15px\] {
+  margin: 15px;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.my-\[0\.83em\] {
+  margin-top: 0.83em;
+  margin-bottom: 0.83em;
+}
+
+.mt-\[130px\] {
+  margin-top: 130px;
+}
+
+.ml-\[5px\] {
+  margin-left: 5px;
+}
+
+.mr-\[10\[x\]\] {
+  margin-right: 10[x];
+}
+
+.mr-\[10px\] {
+  margin-right: 10px;
+}
+
+.block {
+  display: block;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.inline {
+  display: inline;
+}
+
+.hidden {
+  display: none;
+}
+
+.h-\[50px\] {
+  height: 50px;
 }
 
 .h-\[65px\] {
   height: 65px;
 }
 
-.w-3\/6 {
-  width: 50%;
-}
-
 .w-\[100\%\] {
   width: 100%;
 }
 
-.border-2 {
-  border-width: 2px;
+.max-w-xl {
+  max-width: 36rem;
 }
 
-.border-black {
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.border-b-\[1px\] {
+  border-bottom-width: 1px;
+}
+
+.border-t-\[1px\] {
+  border-top-width: 1px;
+}
+
+.border-solid {
+  border-style: solid;
+}
+
+.border-\[\#e6e6e6\] {
   --tw-border-opacity: 1;
-  border-color: rgb(0 0 0 / var(--tw-border-opacity));
+  border-color: rgb(230 230 230 / var(--tw-border-opacity));
+}
+
+.bg-\[\#fff\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.p-0 {
+  padding: 0px;
+}
+
+.px-\[10px\] {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.px-\[3px\] {
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+.py-\[15px\] {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.py-\[7px\] {
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+.pb-\[15px\] {
+  padding-bottom: 15px;
+}
+
+.pb-\[16px\] {
+  padding-bottom: 16px;
+}
+
+.pl-\[60px\] {
+  padding-left: 60px;
+}
+
+.pr-\[15px\] {
+  padding-right: 15px;
+}
+
+.pr-\[16px\] {
+  padding-right: 16px;
+}
+
+.pt-\[15px\] {
+  padding-top: 15px;
+}
+
+.pt-\[16px\] {
+  padding-top: 16px;
+}
+
+.pl-\[10px\] {
+  padding-left: 10px;
+}
+
+.text-left {
+  text-align: left;
 }
 
 .text-center {
   text-align: center;
 }
 
-.text-7xl {
-  font-size: 4.5rem;
-  line-height: 1;
+.text-\[15px\] {
+  font-size: 15px;
 }
 
 .text-\[24px\] {
   font-size: 24px;
 }
 
+.text-\[80px\] {
+  font-size: 80px;
+}
+
+.font-extralight {
+  font-weight: 200;
+}
+
+.italic {
+  font-style: italic;
+}
+
 .text-\[\#b83f45\] {
   --tw-text-opacity: 1;
   color: rgb(184 63 69 / var(--tw-text-opacity));
+}
+
+.text-\[\#484848\] {
+  --tw-text-opacity: 1;
+  color: rgb(72 72 72 / var(--tw-text-opacity));
+}
+
+.opacity-0 {
+  opacity: 0;
+}
+
+.shadow-md {
+  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.shadow-\[\#b6b6b6\] {
+  --tw-shadow-color: #b6b6b6;
+  --tw-shadow: var(--tw-shadow-colored);
+}
+
+.outline-none {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
 }
 
 .filter {
@@ -656,26 +814,16 @@ video {
 }
 
 body{
+  font: 14px Helvetica Neue, Helvetica, Arial, sans-serif;
+  line-height: 1.4em;
   background: #f5f5f5;
-}
-
-.new-todo{
-  font-family: Arial, Helvetica, sans-serif;
-  font-style: italic;
-  background: inset 0 -2px 1px #00000008;
-  padding-left: 10%;
-}
-
-.new-todo:focus{
-  border-color: red;
-}
-
-.card-wrapper{
-  box-shadow: 0 2px 4px #0003,0 25px 50px #0000001a;
-}
-
-.delete-button{
-  padding-left: 20px;
+  color: #111;
+  min-width: 230px;
+  max-width: 550px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 300;
 }
 
 .checkbox-round {
@@ -695,31 +843,56 @@ body{
   background: url(data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%22-10%20-18%20100%20135%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2250%22%20fill%3D%22none%22%20stroke%3D%22%2359A193%22%20stroke-width%3D%223%22%2F%3E%3Cpath%20fill%3D%22%233EA390%22%20d%3D%22M72%2025L42%2071%2027%2056l-4%204%2020%2020%2034-52z%22%2F%3E%3C%2Fsvg%3E);
 }
 
-.container {
-  display: flex;
+.info {
+  margin: 65px auto 0;
+  color: #4d4d4d;
+  font-size: 11px;
+  text-shadow: 0 1px 0 rgba(255,255,255,.5);
+  text-align: center
 }
 
-.left-div,
-  .center-div,
-  .right-div {
-  padding: 10px;
+.hover\:visible:hover {
+  visibility: visible;
 }
 
-.left-div {
-  flex: 0 0 30%;
-  float: left;
+.hover\:text-\[100px\]:hover {
+  font-size: 100px;
 }
 
-.center-div {
-  flex: 1;
-  text-align: center;
+.hover\:opacity-100:hover {
+  opacity: 1;
 }
 
-.right-div {
-  flex: 0 0 30%;
-  float: right;
+.focus\:border-2:focus {
+  border-width: 2px;
 }
 
-.debug-css{
-  border:border-2 border-black;
+.focus\:border-solid:focus {
+  border-style: solid;
+}
+
+.focus\:border-red-300:focus {
+  --tw-border-opacity: 1;
+  border-color: rgb(252 165 165 / var(--tw-border-opacity));
+}
+
+.focus\:outline-none:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.group:hover .group-hover\:visible {
+  visibility: visible;
+}
+
+.group:hover .group-hover\:text-\[100px\] {
+  font-size: 100px;
+}
+
+.group:hover .group-hover\:opacity-100 {
+  opacity: 1;
+}
+
+.group:hover .group-hover\:opacity-80 {
+  opacity: 0.8;
 }

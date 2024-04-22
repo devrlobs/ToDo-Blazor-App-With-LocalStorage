@@ -7,27 +7,16 @@
 }
 
 body{
-    background: #f5f5f5;
-}
-
-.new-todo{
-    font-family: Arial, Helvetica, sans-serif;
-    font-style: italic;
-    background: inset 0 -2px 1px #00000008;
-    padding-left: 10%;
-}
-
-.new-todo:focus{
-    border-color: red;
-}
-
-.card-wrapper{
-    box-shadow: 0 2px 4px #0003,0 25px 50px #0000001a;
-}
-
-.delete-button{
-
-    padding-left: 20px;
+  font: 14px Helvetica Neue, Helvetica, Arial, sans-serif;
+  line-height: 1.4em;
+  background: #f5f5f5;
+  color: #111;
+  min-width: 230px;
+  max-width: 550px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 300;
 }
 
 .checkbox-round {
@@ -45,31 +34,11 @@ body{
 .checkbox-round:checked{
     background: url(data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%22-10%20-18%20100%20135%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2250%22%20fill%3D%22none%22%20stroke%3D%22%2359A193%22%20stroke-width%3D%223%22%2F%3E%3Cpath%20fill%3D%22%233EA390%22%20d%3D%22M72%2025L42%2071%2027%2056l-4%204%2020%2020%2034-52z%22%2F%3E%3C%2Fsvg%3E);
 }
-.container {
-    display: flex; 
-  }
-  
-  .left-div,
-  .center-div,
-  .right-div {
-    padding: 10px;
-  }
-  
-  .left-div {
-    flex: 0 0 30%; 
-    float: left; 
-  }
-  
-  .center-div {
-    flex: 1; 
-    text-align: center; 
-  }
-  
-  .right-div {
-    flex: 0 0 30%;
-    float: right; 
-  }
 
-  .debug-css{
-    border:border-2 border-black;
-  }
+  .info {
+    margin: 65px auto 0;
+    color: #4d4d4d;
+    font-size: 11px;
+    text-shadow: 0 1px 0 rgba(255,255,255,.5);
+    text-align: center
+}

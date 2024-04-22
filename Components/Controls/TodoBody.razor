@@ -1,23 +1,29 @@
-<li style="cursor: pointer;" @ondblclick="OnTodoItemDbClick" class="">
+<div class="hidden">
+        div for toggle all todo items
+</div>
+<li style="cursor: pointer;" class="relative" @ondblclick="OnTodoItemDbClick">
     @if (Item.IsEditing)
     {
-        <input 
-            type="text" 
-            style="width: 200px;" 
-            @oninput="OnTodoEditingInputHandler"
-            @onkeypress="OnTodoEditingItemKeyPressHandler" 
-            value="@Item.Title" />
+        <div class="is-editing text-[24px] border-b-[1px] group text-[#484848]">
+            <input 
+                type="text" 
+                style="width: 200px;" 
+                @oninput="OnTodoEditingInputHandler"
+                @onkeypress="OnTodoEditingItemKeyPressHandler" 
+                value="@Item.Title" />
+        </div>
     }
     else
     {
-        <input class="checkbox-round"
-            @onclick:stopPropagation="true" 
-            @ondblclick:stopPropagation="true" 
-            type="checkbox"
-            @onchange="OnTodoItemInputCheckChanged" 
-            checked="@Item.IsDone" />
-        <span class="">@Item.Title</span>
-        <span>&nbsp;&nbsp;&nbsp;</span>
-        <span class="float-right delete-button" @onclick="OnTodoItemRemove">x</span>
+        <div class="is-viewing text-[24px] border-b-[1px] group text-[#484848]">
+            <input class="checkbox-round absolute"
+                @onclick:stopPropagation="true" 
+                @ondblclick:stopPropagation="true" 
+                type="checkbox"
+                @onchange="OnTodoItemInputCheckChanged" 
+                checked="@Item.IsDone" />
+            <span class="pt-[15px] pr-[15px] pb-[15px] pl-[60px] inline-block">@Item.Title</span>
+            <span class="float-right inline-block m-[15px] opacity-0 group-hover:opacity-80" @onclick="OnTodoItemRemove">x</span>
+        </div>
     }
 </li>

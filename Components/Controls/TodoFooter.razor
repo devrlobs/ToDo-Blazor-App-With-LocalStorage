@@ -1,23 +1,13 @@
-<div class="container">
-    <div class="left-left">
-        <span 
-            class="">@FooterTemplateData.TodoItemCount Active Count
-        </span>
-    </div>
-    <div class="center-div">
-        <span class="">
-            <button @onclick="@(() => OnTodoFilterClickedHandler("All"))">All</button>
-        </span>
-        <span class="">
-            <button @onclick="@(() => OnTodoFilterClickedHandler("Active"))">Active</button>
-        </span>
-        <span class="">
-            <button @onclick="@(() => OnTodoFilterClickedHandler("Completed"))">Completed</button>
-        </span>
-    </div>
-    <div class="right-div">
-        <span class="">
-            <button @onclick="OnTodoItemCompletedRemove">Remove Completed</button>
-        </span>
-    </div>
-</div>
+<span class="float-left text-left">@FooterTemplateData.TodoItemCount items left</span>
+<ul class="m-0 p-0 absolute inset-x-0">
+    <li class="inline cursor-pointer">
+        <a class="m-[3px] px-[3px] py-[7px]" @onclick="@(() => OnTodoFilterClickedHandler("All"))">All</a>
+    </li>
+    <li class="inline cursor-pointer">
+        <a class="m-[3px] px-[3px] py-[7px]" @onclick="@(() => OnTodoFilterClickedHandler("Active"))">Active</a>
+    </li>
+    <li class="inline cursor-pointer">
+        <a class="m-[3px] px-[3px] py-[7px]" @onclick="@(() => OnTodoFilterClickedHandler("Completed"))">Completed</a>
+    </li>
+    <button class="float-right relative cursor-pointer mr-[10px]" @onclick="OnTodoItemCompletedRemove">Clear Completed</button>
+</ul>

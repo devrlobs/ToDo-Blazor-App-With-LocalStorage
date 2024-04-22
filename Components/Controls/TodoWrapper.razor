@@ -1,38 +1,48 @@
-<div class="m-auto mt-[30px] w-3/6 card-wrapper">
-    @if (InputTemplate is null)
-    {
-        <li>Please provide your template.</li>
-    }
-    else
-    {
-        @InputTemplate(new TodoItemInputTemplateData { OnSave = OnTodoInputSaveHandler })
-    }
-
-    <ul>
-        @foreach (var (id, todoItem) in Items)
+<section class="max-w-xl mx-auto mt-[130px] relative shadow-[#b6b6b6] shadow-md bg-[#fff]">
+    <header class="">
+        @if (InputTemplate is null)
         {
-            if (ItemTemplate is null)
-            {
-                <li>Please provide your template.</li>
-            }
-            else
-            {
-                @ItemTemplate(GetTodoItemTemplateData(todoItem))
-            }
+            <li>Please provide your template.</li>
         }
-    </ul>
-
-    @if (FooterTemplate is null)
-    {
-        <span>Please provide your footer.</span>
-    }
-    else
-    {
-        @FooterTemplate(new TodoItemFooterTemplateData
+        else
         {
-            OnFilterClick = OnFilterClickHandler,
-            TodoItemCount = Items.Where(o => o.Value.IsDone == false).Count(),
-            OnRemoveCompletedClick = OnTodoItemRemoveCompleted
-        })
-    }
-</div>
+            @InputTemplate(new TodoItemInputTemplateData { OnSave = OnTodoInputSaveHandler })
+        }
+    </header>
+    <main class="@(Items.Count > 0 ? "outline-none border-solid border-t-[1px] border-[#e6e6e6] relative z-[2]" : "hidden")">
+        <ul class="m-0 p-0">
+            @foreach (var (id, todoItem) in Items)
+            {
+                if (ItemTemplate is null)
+                {
+                    <li>Please provide your template.</li>
+                }
+                else
+                {
+                    @ItemTemplate(GetTodoItemTemplateData(todoItem))
+                }
+            }
+        </ul>
+    </main>
+    <footer class="@(Items.Count > 0 ? "px-[10px] py-[15px] h-[50px] text-center text-[15px] outline-none border-solid border-t-[1px] border-[#e6e6e6]"  : "hidden")">
+        @if (FooterTemplate is null)
+        {
+            <span>Please provide your footer.</span>
+        }
+        else
+        {
+            @FooterTemplate(new TodoItemFooterTemplateData
+            {
+                OnFilterClick = OnFilterClickHandler,
+                TodoItemCount = Items.Where(o => o.Value.IsDone == false).Count(),
+                OnRemoveCompletedClick = OnTodoItemRemoveCompleted
+            })
+        }
+    </footer>
+</section>
+
+<footer class="info">
+      <p>Double-click to edit a todo</p>
+      <p>Created by the TodoMVC Team</p>
+      <p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+</footer>

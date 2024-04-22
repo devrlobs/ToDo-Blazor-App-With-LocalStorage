@@ -36,3 +36,15 @@ some notes:
 
 Items here is the parameter in the TodoWrapper
 TodoItems here are the data from the parent component
+
+
+To do today
+convert checkbox into tailwindcss
+center checkbox
+close button add hover effect and correct placement
+filter buttons border
+    -will have to modify backend code to check the status of the fikters
+
+card effect bottom part
+toggle all todo items function
+
