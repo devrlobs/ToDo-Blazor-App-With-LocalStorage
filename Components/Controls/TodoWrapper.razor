@@ -9,36 +9,39 @@
             @InputTemplate(new TodoItemInputTemplateData { OnSave = OnTodoInputSaveHandler })
         }
     </header>
-    <main class="@(Items.Count > 0 ? "outline-none border-solid border-t-[1px] border-[#e6e6e6] relative z-[2]" : "hidden")">
-        <ul class="m-0 p-0">
-            @foreach (var (id, todoItem) in Items)
+    @if(Items.Count > 0)
+    {
+        <main class="outline-none border-solid border-t-[1px] border-[#e6e6e6] relative z-[2]">
+            <ul class="m-0 p-0">
+                @foreach (var (id, todoItem) in Items)
+                {
+                    if (ItemTemplate is null)
+                    {
+                        <li>Please provide your template.</li>
+                    }
+                    else
+                    {
+                        @ItemTemplate(GetTodoItemTemplateData(todoItem))
+                    }
+                }
+            </ul>
+        </main>
+        <footer class="px-[10px] py-[15px] h-[50px] text-center text-[15px] outline-none border-solid border-t-[1px] border-[#e6e6e6]">
+            @if (FooterTemplate is null)
             {
-                if (ItemTemplate is null)
-                {
-                    <li>Please provide your template.</li>
-                }
-                else
-                {
-                    @ItemTemplate(GetTodoItemTemplateData(todoItem))
-                }
+                <span>Please provide your footer.</span>
             }
-        </ul>
-    </main>
-    <footer class="@(Items.Count > 0 ? "px-[10px] py-[15px] h-[50px] text-center text-[15px] outline-none border-solid border-t-[1px] border-[#e6e6e6]"  : "hidden")">
-        @if (FooterTemplate is null)
-        {
-            <span>Please provide your footer.</span>
-        }
-        else
-        {
-            @FooterTemplate(new TodoItemFooterTemplateData
+            else
             {
-                OnFilterClick = OnFilterClickHandler,
-                TodoItemCount = Items.Where(o => o.Value.IsDone == false).Count(),
-                OnRemoveCompletedClick = OnTodoItemRemoveCompleted
-            })
-        }
-    </footer>
+                @FooterTemplate(new TodoItemFooterTemplateData
+                {
+                    OnFilterClick = OnFilterClickHandler,
+                    TodoItemCount = Items.Where(o => o.Value.IsDone == false).Count(),
+                    OnRemoveCompletedClick = OnTodoItemRemoveCompleted
+                })
+            }
+        </footer>
+    }
 </section>
 
 <footer class="info">

@@ -6,8 +6,8 @@
     {
         <div class="is-editing text-[24px] border-b-[1px] group text-[#484848]">
             <input 
+                class="pt-[15px] pr-[15px] w-[100%] pb-[15px] pl-[60px] inline-block focus:outline-none focus:border-solid focus:border-2 focus:border-[#b83f45]"
                 type="text" 
-                style="width: 200px;" 
                 @oninput="OnTodoEditingInputHandler"
                 @onkeypress="OnTodoEditingItemKeyPressHandler" 
                 value="@Item.Title" />
@@ -16,13 +16,13 @@
     else
     {
         <div class="is-viewing text-[24px] border-b-[1px] group text-[#484848]">
-            <input class="checkbox-round absolute"
+            <input class="w-[40px] h-[40px] border-[50%] align-middle appearance-none outline-none cursor-pointer checkbox-round absolute"
                 @onclick:stopPropagation="true" 
                 @ondblclick:stopPropagation="true" 
                 type="checkbox"
                 @onchange="OnTodoItemInputCheckChanged" 
                 checked="@Item.IsDone" />
-            <span class="pt-[15px] pr-[15px] pb-[15px] pl-[60px] inline-block">@Item.Title</span>
+            <span class="line-through pt-[15px] pr-[15px] pb-[15px] pl-[60px] inline-block ">@Item.Title</span>
             <span class="float-right inline-block m-[15px] opacity-0 group-hover:opacity-80" @onclick="OnTodoItemRemove">x</span>
         </div>
     }
