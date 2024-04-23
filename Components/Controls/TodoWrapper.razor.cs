@@ -38,11 +38,23 @@ public partial class TodoWrapper
     [Parameter]
     public RenderFragment<TodoItemFooterTemplateData>? FooterTemplate { get; set; }
 
+    public string Filter { get; set; } = "All";
+
     protected void OnTodoInputSaveHandler(string todo)
     {
         TodoItem todoItem = new(Guid.NewGuid(), todo, false, false);
         Items.Add(todoItem.Id, todoItem);
         OnChanged.InvokeAsync(new TodoItemStateChangedEventArgs(todoItem, TodoItemChangeType.Add));
+    }
+    protected void OnToggleStatusButtonHandler()
+    {
+       var tempItems = Items.Where(o => o.Value.IsDone == false).ToDictionary(p => p.Key, p => p.Value);
+
+        foreach (var todo in tempItems)
+        {
+            Items[todo.Value.Id] = todo.Value;
+            OnChanged.InvokeAsync(new TodoItemStateChangedEventArgs(todo.Value, TodoItemChangeType.Update));
+        }
     }
 
     protected void OnItemChanged(TodoItem item)
@@ -79,6 +91,7 @@ public partial class TodoWrapper
 
     protected void OnFilterClickHandler(string filterType)
     {
+        Filter = filterType;
         OnFilterChanged.InvokeAsync(filterType);
     }
 }

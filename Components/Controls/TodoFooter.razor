@@ -1,13 +1,23 @@
-<span class="float-left text-left">@FooterTemplateData.TodoItemCount items left</span>
-<ul class="m-0 p-0 absolute inset-x-0">
-    <li class="inline cursor-pointer">
-        <a class="m-[3px] px-[3px] py-[7px]" @onclick="@(() => OnTodoFilterClickedHandler("All"))">All</a>
-    </li>
-    <li class="inline cursor-pointer">
-        <a class="m-[3px] px-[3px] py-[7px]" @onclick="@(() => OnTodoFilterClickedHandler("Active"))">Active</a>
-    </li>
-    <li class="inline cursor-pointer">
-        <a class="m-[3px] px-[3px] py-[7px]" @onclick="@(() => OnTodoFilterClickedHandler("Completed"))">Completed</a>
-    </li>
-    <button class="float-right relative cursor-pointer mr-[10px]" @onclick="OnTodoItemCompletedRemove">Clear Completed</button>
-</ul>
+<div class="flex justify-between align-center">
+    <div class="" >
+        <span class="text-[#484848]">@FooterTemplateData.TodoItemCount items left</span>
+    </div>
+    <div class=" text-[#484848]">
+        <ul class="">
+            <li class="inline cursor-pointer group">
+                <a class="@(@FooterTemplateData.FooterSelectedFilter is "All" ? "m-[3px] px-[3px] py-[7px] border-transparent border-2 border-red-300" : "m-[3px] px-[3px] py-[7px] border-transparent border-2 group-hover:border-red-300")" @onclick="@(() => OnTodoFilterClickedHandler("All"))">All</a>
+            </li>
+            <li class="inline cursor-pointer group">
+                <a class="@(@FooterTemplateData.FooterSelectedFilter is "Active" ? "m-[3px] px-[3px] py-[7px] border-transparent border-2 border-red-300" : "m-[3px] px-[3px] py-[7px] border-transparent border-2 group-hover:border-red-300")" @onclick="@(() => OnTodoFilterClickedHandler("Active"))">Active</a>
+            </li>
+            <li class="inline cursor-pointer group">
+                <a class="@(@FooterTemplateData.FooterSelectedFilter is "Completed" ? "m-[3px] px-[3px] py-[7px] border-transparent border-2 border-red-300" : "m-[3px] px-[3px] py-[7px] border-transparent border-2 group-hover:border-red-300")" @onclick="@(() => OnTodoFilterClickedHandler("Completed"))">Completed</a>
+            </li>
+        </ul>
+    </div>
+    <div class="group">
+        <button class="cursor-pointer mr-[10px] text-[#484848] group-hover:underline  decoration-solid" @onclick="OnTodoItemCompletedRemove">Clear Completed</button>
+    </div>
+</div>
+<div class="absolute left-1/2 transform -translate-x-1/2 w-[542px] h-[21px] bg-white shadow-md z-[-1]"></div>
+<div class="absolute left-1/2 transform -translate-x-1/2 w-[535px] h-[27px] bg-white shadow-md z-[-2]"></div>

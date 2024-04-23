@@ -13,6 +13,8 @@ public partial class TodoHeader
 
     [Parameter]
     public EventCallback<string> OnSave { get; set; }
+    [Parameter]
+    public EventCallback? ToggleStatus { get; set; }
 
     [Parameter, EditorRequired]
     public required TodoItemInputTemplateData HeaderTemplateData { get; set; }
@@ -24,5 +26,9 @@ public partial class TodoHeader
             HeaderTemplateData.OnSave?.Invoke(CurrentTodoField);
             CurrentTodoField = string.Empty;
         }
+    }
+    protected void ToggleTodoItemStatus(MouseEventArgs e)
+    {
+        HeaderTemplateData.ToggleStatus?.Invoke();
     }
 }

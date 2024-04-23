@@ -15,6 +15,9 @@ public partial class TodoFooter
     [Parameter]
     public int TodoItemCount { get; set; }
 
+    [Parameter]
+    public string FooterSelectedFilter { get; set; } = "All";
+
     [Parameter, EditorRequired]
     public required TodoItemFooterTemplateData FooterTemplateData { get; set; }
 

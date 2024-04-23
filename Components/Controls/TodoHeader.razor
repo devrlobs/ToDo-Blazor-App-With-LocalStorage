@@ -1,6 +1,13 @@
-    <a >
+    <a>
         <h1 class="absolute top-[-140px] w-[100%] text-[80px] font-extralight text-center  text-[#b83f45] my-[0.83em] ">todos</h1>
-        </a>
+    </a>
+    <div class="absolute cursor-pointer flex justify-center mt-[20px] ml-[10px]">
+        <button @onclick="ToggleTodoItemStatus">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+            </svg>
+        </button>
+    </div>
     <input class="w-[100%] h-[65px] text-[24px] pt-[16px] pr-[16px] pb-[16px] pl-[60px] focus:outline-none focus:border-solid focus:border-2 focus:border-red-300 italic"
         type="text" 
         placeholder=@Placeholder 

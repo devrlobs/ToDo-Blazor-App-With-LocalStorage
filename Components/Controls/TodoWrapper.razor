@@ -1,4 +1,4 @@
-<section class="max-w-xl mx-auto mt-[130px] relative shadow-[#b6b6b6] shadow-md bg-[#fff]">
+<section class="max-w-xl mx-auto mt-[130px] relative shadow-md bg-[#fff]">
     <header class="">
         @if (InputTemplate is null)
         {
@@ -6,7 +6,7 @@
         }
         else
         {
-            @InputTemplate(new TodoItemInputTemplateData { OnSave = OnTodoInputSaveHandler })
+            @InputTemplate(new TodoItemInputTemplateData { OnSave = OnTodoInputSaveHandler, ToggleStatus = OnToggleStatusButtonHandler})
         }
     </header>
     @if(Items.Count > 0)
@@ -26,6 +26,9 @@
                 }
             </ul>
         </main>
+    }
+    @if(Items.Count > 0 || Filter is "Completed" || Filter is "Active")
+    {
         <footer class="px-[10px] py-[15px] h-[50px] text-center text-[15px] outline-none border-solid border-t-[1px] border-[#e6e6e6]">
             @if (FooterTemplate is null)
             {
@@ -37,7 +40,8 @@
                 {
                     OnFilterClick = OnFilterClickHandler,
                     TodoItemCount = Items.Where(o => o.Value.IsDone == false).Count(),
-                    OnRemoveCompletedClick = OnTodoItemRemoveCompleted
+                    OnRemoveCompletedClick = OnTodoItemRemoveCompleted,
+                    FooterSelectedFilter = Filter
                 })
             }
         </footer>
