@@ -48,13 +48,26 @@ public partial class TodoWrapper
     }
     protected void OnToggleStatusButtonHandler()
     {
-       var tempItems = Items.Where(o => o.Value.IsDone == false).ToDictionary(p => p.Key, p => p.Value);
+        var tempItems = Items.Where(o => o.Value.IsDone == false).ToDictionary(p => p.Key, p => p.Value);
 
-        foreach (var todo in tempItems)
+        if (tempItems.Count > 0)
         {
-            Items[todo.Value.Id] = todo.Value;
-            OnChanged.InvokeAsync(new TodoItemStateChangedEventArgs(todo.Value, TodoItemChangeType.Update));
+            foreach (var todo in tempItems)
+            {
+                Items[todo.Value.Id] = todo.Value with { IsDone = true };
+                OnChanged.InvokeAsync(new TodoItemStateChangedEventArgs(todo.Value, TodoItemChangeType.Update));
+            }
         }
+        else
+        {
+             var itemsDone = Items.Where(o => o.Value.IsDone == true).ToDictionary(p => p.Key, p => p.Value);
+              foreach (var todo in itemsDone)
+            {
+                Items[todo.Value.Id] = todo.Value with { IsDone = false };
+                OnChanged.InvokeAsync(new TodoItemStateChangedEventArgs(todo.Value, TodoItemChangeType.Update));
+            }
+        }
+
     }
 
     protected void OnItemChanged(TodoItem item)

@@ -5,13 +5,13 @@
     <div class=" text-[#484848]">
         <ul class="">
             <li class="inline cursor-pointer group">
-                <a class="@(@FooterTemplateData.FooterSelectedFilter is "All" ? "m-[3px] px-[3px] py-[7px] border-transparent border-2 border-red-300" : "m-[3px] px-[3px] py-[7px] border-transparent border-2 group-hover:border-red-300")" @onclick="@(() => OnTodoFilterClickedHandler("All"))">All</a>
+                <a class="@(@FooterTemplateData.FooterSelectedFilter is "All" ? "m-[3px] px-[3px] py-[7px] border-2 border-red-300 " : "m-[3px] px-[3px] py-[7px] border-transparent border-2 group-hover:border-red-300")" @onclick="@(() => OnTodoFilterClickedHandler("All"))">All</a>
             </li>
             <li class="inline cursor-pointer group">
-                <a class="@(@FooterTemplateData.FooterSelectedFilter is "Active" ? "m-[3px] px-[3px] py-[7px] border-transparent border-2 border-red-300" : "m-[3px] px-[3px] py-[7px] border-transparent border-2 group-hover:border-red-300")" @onclick="@(() => OnTodoFilterClickedHandler("Active"))">Active</a>
+                <a class="@(@FooterTemplateData.FooterSelectedFilter is "Active" ? "m-[3px] px-[3px] py-[7px]  border-2 border-red-300" : "m-[3px] px-[3px] py-[7px] border-transparent border-2 group-hover:border-red-300")" @onclick="@(() => OnTodoFilterClickedHandler("Active"))">Active</a>
             </li>
             <li class="inline cursor-pointer group">
-                <a class="@(@FooterTemplateData.FooterSelectedFilter is "Completed" ? "m-[3px] px-[3px] py-[7px] border-transparent border-2 border-red-300" : "m-[3px] px-[3px] py-[7px] border-transparent border-2 group-hover:border-red-300")" @onclick="@(() => OnTodoFilterClickedHandler("Completed"))">Completed</a>
+                <a class="@(@FooterTemplateData.FooterSelectedFilter is "Completed" ? "m-[3px] px-[3px] py-[7px] border-2 border-red-300" : "m-[3px] px-[3px] py-[7px] border-transparent border-2 group-hover:border-red-300")" @onclick="@(() => OnTodoFilterClickedHandler("Completed"))">Completed</a>
             </li>
         </ul>
     </div>
